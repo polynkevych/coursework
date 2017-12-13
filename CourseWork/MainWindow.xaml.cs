@@ -23,6 +23,10 @@ namespace CourseWork
         public MainWindow()
         {
             InitializeComponent();
+
+            var wagonView = new WagonView();
+            wagonView.Show();
+            Close();
         }
     }
 }
