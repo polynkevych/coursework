@@ -1,0 +1,25 @@
+﻿<Window x:Class="CourseWork.TrainInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseWork"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized"  
+        Title="Train Manager" Height="372" Width="564">
+    <Grid>
+        <!--Train info block-->
+        <TextBlock x:Name="number" HorizontalAlignment="Left" Margin="46,89,0,0" TextWrapping="Wrap" Text="№" VerticalAlignment="Top"/>
+        <TextBlock x:Name="direction" HorizontalAlignment="Left" Margin="46,119,0,0" TextWrapping="Wrap" Text="Direction" VerticalAlignment="Top"/>
+        <TextBlock x:Name="wagonsAmount" HorizontalAlignment="Left" Margin="45,150,0,0" TextWrapping="Wrap" Text="Wagons amount" VerticalAlignment="Top" Height="40" Width="65"/>
+        <TextBox x:Name="numberBox" HorizontalAlignment="Left" Height="23" Margin="120,88,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="165"/>
+        <TextBox x:Name="directionBox" HorizontalAlignment="Left" Height="23" Margin="120,123,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="165"/>
+        <TextBox x:Name="wagonsAmountBox" HorizontalAlignment="Left" Height="23" Margin="120,157,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="165"/>
+        <GroupBox x:Name="trainGroupBox" Header="Train" HorizontalAlignment="Left" Height="154" Margin="10,56,0,0" VerticalAlignment="Top" Width="280"/>
+        <!--Wagons block-->
+        <TextBox x:Name="dateBox" HorizontalAlignment="Left" Height="23" Margin="380,88,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="155"/>
+        <TextBlock x:Name="date" HorizontalAlignment="Left" Margin="306,89,0,0" TextWrapping="Wrap" Text="Date" VerticalAlignment="Top"/>
+        <GroupBox x:Name="wagonGroupBox" Header="Wagons" HorizontalAlignment="Left" Height="275" Margin="295,56,0,0" VerticalAlignment="Top" Width="251"/>
+
+    </Grid>
+</Window>
