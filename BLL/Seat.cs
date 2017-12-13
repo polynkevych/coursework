@@ -8,11 +8,6 @@ namespace TrainSystem
     {
         public List<Date> bookedDates = new List<Date>();
 
-        public Seat()
-        {
-            
-        }
-
         public bool IsBooked(Date date)
         {
             if (bookedDates.Contains(date)) return true;

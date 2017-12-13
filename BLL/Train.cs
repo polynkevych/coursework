@@ -8,7 +8,21 @@ namespace TrainSystem
 {
     public class Train
     {
+        public int Id { get; private set; }
+        public string Direction { get; private set; }
+
         public List<Wagon> Wagons = new List<Wagon>();
+
+        public Train(int id, string direction)
+        {
+            Id = id;
+            Direction = direction;
+        }
+
+        public void AddWagon()
+        {
+            Wagons.Add(new Wagon());
+        }
 
         public void AddWagon(Wagon wagon)
         {
@@ -17,7 +31,7 @@ namespace TrainSystem
 
         public void DeleteWagon(Wagon wagon)
         {
-
+            Wagons.Remove(wagon);
         }
 
     }
