@@ -14,5 +14,12 @@ namespace TrainSystem
             Month = month;
             Year = year;
         }
+
+        public Date(DateTime dateTime)
+        {
+            Day = dateTime.Day;
+            Month = dateTime.Month;
+            Year = dateTime.Year;
+        }
     }
 }

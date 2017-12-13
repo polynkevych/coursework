@@ -8,6 +8,11 @@ namespace TrainSystem
     {
         public List<Date> bookedDates = new List<Date>();
 
+        public Seat(int Id)
+        {
+            _id = Id;
+        }
+
         public bool IsBooked(Date date)
         {
             if (bookedDates.Contains(date)) return true;
@@ -21,5 +26,12 @@ namespace TrainSystem
             bookedDates.Add(date);
             return true;
         }
+
+        public override string ToString()
+        {
+            return _id.ToString();
+        }
+
+        private int _id;
     }
 }

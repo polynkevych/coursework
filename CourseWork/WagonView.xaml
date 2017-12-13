@@ -1,0 +1,17 @@
+﻿<Window x:Class="CourseWork.WagonView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseWork"
+        mc:Ignorable="d"
+        Title="WagonView" Height="450" Width="450">
+    <Grid>
+        <ListBox x:Name="availableTickes" HorizontalAlignment="Left" Height="313" Margin="34,57,0,0" VerticalAlignment="Top" Width="86" SelectionChanged="listBox_SelectionChanged"/>
+        <Button x:Name="bookButton" Content="Book ticket" HorizontalAlignment="Left" Margin="295,85,0,0" VerticalAlignment="Top" Width="98" Height="26" Click="bookButton_Click"/>
+        <ListBox x:Name="bookedTickets" HorizontalAlignment="Left" Height="313" Margin="148,57,0,0" VerticalAlignment="Top" Width="86"/>
+        <Label x:Name="label" Content="Available" HorizontalAlignment="Left" Margin="47,26,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Booked" HorizontalAlignment="Left" Margin="166,26,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="datePicker" HorizontalAlignment="Left" Margin="291,151,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
