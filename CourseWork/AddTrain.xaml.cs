@@ -10,35 +10,34 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TrainSystem;
 
 namespace CourseWork
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AddTrain.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddTrain : Window
     {
-        public MainWindow()
+        public AddTrain(TrainsManager trainsManager)
         {
             InitializeComponent();
+
+            _trainsManager = trainsManager;
         }
 
-        private void userLoginButton_Click(object sender, RoutedEventArgs e)
+        private TrainsManager _trainsManager;
+
+        private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
-            var user = new User(false);
-            var wagonView = new TrainsSearchView(user);
-            wagonView.Show();
             Close();
         }
 
-        private void adminLoginButton_Click(object sender, RoutedEventArgs e)
+        private void addTrainButton_Click(object sender, RoutedEventArgs e)
         {
-            var user = new User(true);
-            var wagonView = new TrainsSearchView(user);
-            wagonView.Show();
+            if (idBox.Text == "" || directionBox.Text == "") return;
+            _trainsManager.AddTrain(idBox.Text, directionBox.Text);
             Close();
         }
     }

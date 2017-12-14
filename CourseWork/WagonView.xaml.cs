@@ -20,34 +20,23 @@ namespace CourseWork
     /// </summary>
     public partial class WagonView : Window
     {
-        public WagonView()
+        public WagonView(User user, Wagon wagon, DateTime? selectedDate)
         {
             InitializeComponent();
 
-            var trainsManager = new TrainsManager();
+            _user = user;
+            if (!_user.IsAdmin)
+                deleteButton.Visibility = Visibility.Hidden;
 
-            var train1 = new Train(0, "dir1");
-            _wagon = new Wagon();
-            bool first = false;
-
-            foreach (var seat in _wagon.Seats)
-            {
-                if (!first)
-                {
-                    first = true;
-                    continue;
-                }
-                seat.Book(_selectedDate);
-            }
+            _wagon = wagon;
 
             UpdateTickets();
 
-            train1.AddWagon(_wagon);
-            trainsManager.AddTrain(train1);
-
             datePicker.SelectedDateChanged += OnSelectedDateChanged;
+            datePicker.SelectedDate = selectedDate;
         }
 
+        private User _user;
         private Wagon _wagon;
         private Date _selectedDate;
 
@@ -94,8 +83,14 @@ namespace CourseWork
             if (availableTickes.SelectedItem == null) return;
             var seat = availableTickes.SelectedItem as Seat;
             if (seat == null) return;
-            seat.Book(_selectedDate);
+            seat.Book(_user, _selectedDate);
             UpdateTickets();
+        }
+
+        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            _wagon.Train.DeleteWagon(_wagon);
+            Close();
         }
     }
 }

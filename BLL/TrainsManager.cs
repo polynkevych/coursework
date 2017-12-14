@@ -10,15 +10,26 @@ namespace TrainSystem
     {
         public List<Train> Trains = new List<Train>();
 
-        public void AddTrain(Train train)
+        public Train AddTrain(string id, string direction) //Train train)
         {
+            var train = new Train(this, id, direction);
             Trains.Add(train);
+            return train;
+        }
+
+        public void DeleteTrain(Train train)
+        {
+            Trains.Remove(train);
         }
 
         public List<Train> FilterTrains(string keyword, Date date)
         {
             var direction = GetTrainsByDirection(Trains, keyword);
-            return GetUnbookedTrains(direction, date);
+            foreach (var train in direction)
+            {
+                train.GetAvailibleSeats(date);
+            }
+            return direction.OrderByDescending(t => t.AvailibleSeats).ToList();//GetUnbookedTrains(direction, date);
 
         }
 
@@ -28,10 +39,10 @@ namespace TrainSystem
             return result.ToList();
         }
 
-        private List<Train> GetUnbookedTrains(List<Train> trains, Date date)
-        {
-            var result = trains.Where(t => t.Wagons.Any(w => w.Seats.Any(s => !s.IsBooked(date))));
-            return result.ToList();
-        }
+        //private List<Train> GetUnbookedTrains(List<Train> trains, Date date)
+        //{
+        //    var result = trains.Where(t => t.Wagons.Any(w => w.Seats.Any(s => !s.IsBooked(date))));
+        //    return result.ToList();
+        //}
     }
 }

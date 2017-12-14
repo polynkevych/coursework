@@ -7,15 +7,18 @@
         mc:Ignorable="d"
         Title="TrainsSearchView" Height="545.175" Width="545.175">
     <Grid>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="340" Margin="68,94,0,0" VerticalAlignment="Top" Width="204" SelectionChanged="dataGrid_SelectionChanged">
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="340" Margin="68,94,0,0" VerticalAlignment="Top" Width="221" SelectionChanged="dataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path = Id, Mode = OneWay}" x:Name="Number" Header="№" FontSize="8"/>
                 <DataGridTextColumn Binding="{Binding Path = Direction, Mode = OneWay}" ClipboardContentBinding="{x:Null}" Header="Direction"/>
                 <DataGridTextColumn Binding="{Binding Path = WagonsCount, Mode = OneWay}" ClipboardContentBinding="{x:Null}" Header="Wagons"/>
+                <DataGridTextColumn Binding="{Binding Path = AvailibleSeats, Mode = OneWay}" ClipboardContentBinding="{x:Null}" Header="Availible Seats"/>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBox x:Name="keywordBox" HorizontalAlignment="Left" Height="22" Margin="43,42,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" TextChanged="keywordBox_TextChanged"/>
+        <TextBox x:Name="keywordBox" HorizontalAlignment="Left" Height="22" Margin="43,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="keywordBox_TextChanged"/>
         <DatePicker x:Name="datePicker" HorizontalAlignment="Left" Margin="198,42,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="addNewTrainButton" Content="Add new train" HorizontalAlignment="Left" Margin="319,126,0,0" VerticalAlignment="Top" Width="103" Height="27" Click="addNewTrainButton_Click"/>
+        <Button x:Name="profileButton" Content="Profile" HorizontalAlignment="Left" Margin="417,27,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>

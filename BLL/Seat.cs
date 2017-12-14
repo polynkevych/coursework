@@ -19,10 +19,11 @@ namespace TrainSystem
             return false;
         }
 
-        public bool Book(Date date)
+        public bool Book(User user, Date date)
         {
             if (IsBooked(date)) return false;
 
+            user.BookedSeats.Add(this, date);
             bookedDates.Add(date);
             return true;
         }

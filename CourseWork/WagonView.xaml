@@ -13,5 +13,6 @@
         <Label x:Name="label" Content="Available" HorizontalAlignment="Left" Margin="47,26,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1" Content="Booked" HorizontalAlignment="Left" Margin="166,26,0,0" VerticalAlignment="Top"/>
         <DatePicker x:Name="datePicker" HorizontalAlignment="Left" Margin="291,151,0,0" VerticalAlignment="Top" FirstDayOfWeek="Monday"/>
+        <Button x:Name="deleteButton" Content="Delete wagon" HorizontalAlignment="Left" Margin="295,247,0,0" VerticalAlignment="Top" Width="98" Height="24" Click="deleteButton_Click"/>
     </Grid>
 </Window>
