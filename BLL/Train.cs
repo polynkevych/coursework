@@ -10,6 +10,7 @@ namespace TrainSystem
     {
         public int Id { get; private set; }
         public string Direction { get; private set; }
+        public int WagonsCount { get { return Wagons.Count; } }
 
         public List<Wagon> Wagons = new List<Wagon>();
 

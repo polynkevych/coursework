@@ -15,16 +15,23 @@ namespace TrainSystem
             Trains.Add(train);
         }
 
-        public List<Train> GetTrainsByDirection(string keyword)
+        public List<Train> FilterTrains(string keyword, Date date)
         {
-            var trains = Trains.Where(t => t.Direction.Contains(keyword));
-            return trains.ToList();
+            var direction = GetTrainsByDirection(Trains, keyword);
+            return GetUnbookedTrains(direction, date);
+
         }
 
-        public List<Train> GetUnbookedTrains(Date date)
+        private List<Train> GetTrainsByDirection(List<Train> trains, string keyword)
         {
-            var trains = Trains.Where(t => t.Wagons.Any(w => w.Seats.Any(s => !s.IsBooked(date))));
-            return trains.ToList();
+            var result = trains.Where(t => t.Direction.Contains(keyword));
+            return result.ToList();
+        }
+
+        private List<Train> GetUnbookedTrains(List<Train> trains, Date date)
+        {
+            var result = trains.Where(t => t.Wagons.Any(w => w.Seats.Any(s => !s.IsBooked(date))));
+            return result.ToList();
         }
     }
 }

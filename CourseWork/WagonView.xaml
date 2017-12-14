@@ -9,9 +9,9 @@
     <Grid>
         <ListBox x:Name="availableTickes" HorizontalAlignment="Left" Height="313" Margin="34,57,0,0" VerticalAlignment="Top" Width="86" SelectionChanged="listBox_SelectionChanged"/>
         <Button x:Name="bookButton" Content="Book ticket" HorizontalAlignment="Left" Margin="295,85,0,0" VerticalAlignment="Top" Width="98" Height="26" Click="bookButton_Click"/>
-        <ListBox x:Name="bookedTickets" HorizontalAlignment="Left" Height="313" Margin="148,57,0,0" VerticalAlignment="Top" Width="86"/>
+        <ListBox x:Name="bookedTickets" HorizontalAlignment="Left" Height="313" Margin="148,57,0,0" VerticalAlignment="Top" Width="86" IsEnabled="False"/>
         <Label x:Name="label" Content="Available" HorizontalAlignment="Left" Margin="47,26,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1" Content="Booked" HorizontalAlignment="Left" Margin="166,26,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="datePicker" HorizontalAlignment="Left" Margin="291,151,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="datePicker" HorizontalAlignment="Left" Margin="291,151,0,0" VerticalAlignment="Top" FirstDayOfWeek="Monday"/>
     </Grid>
 </Window>

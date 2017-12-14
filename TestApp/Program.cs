@@ -44,9 +44,9 @@ namespace TestApp
             train2.AddWagon(wagon2);
             trainsManager.AddTrain(train2);
 
-            var suitableTrains = trainsManager.GetUnbookedTrains(new Date(01, 01, 2000));
-            foreach (var train in suitableTrains)
-                Console.WriteLine(train.Id);
+            //var suitableTrains = trainsManager.GetUnbookedTrains(new Date(01, 01, 2000));
+            //foreach (var train in suitableTrains)
+            //    Console.WriteLine(train.Id);
         }
     }
 }

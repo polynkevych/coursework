@@ -24,7 +24,7 @@ namespace CourseWork
         {
             InitializeComponent();
 
-            var wagonView = new WagonView();
+            var wagonView = new TrainsSearchView();//WagonView();
             wagonView.Show();
             Close();
         }
