@@ -6,7 +6,7 @@ namespace TrainSystem
 {
     public class Wagon
     {
-        public int WagonId { get; set; }
+        public int Id { get; set; }
         public int AvailibleSeats { get; set; }
         public int AvailiblePercent { get { return (int)Math.Round((float)AvailibleSeats / (float)Seats.Count * 100); } }
 
@@ -17,11 +17,11 @@ namespace TrainSystem
         public Wagon(Train train, int wagonId)
         {
             Train = train;
-            WagonId = wagonId;
+            Id = wagonId;
 
             for (int i = 1; i <= 27; i++)
             {
-                var seat = new Seat(i);
+                var seat = new Seat(this, i);
                 Seats.Add(seat);
             }
         }

@@ -67,9 +67,9 @@ namespace CourseWork
         private void addWagonButton_Click(object sender, RoutedEventArgs e)
         {
             int newWagonId = 1;
-            var lastWagon = _train.Wagons.OrderBy(w => w.WagonId).LastOrDefault();
+            var lastWagon = _train.Wagons.OrderBy(w => w.Id).LastOrDefault();
             if (lastWagon != null)
-                newWagonId = lastWagon.WagonId + 1;
+                newWagonId = lastWagon.Id + 1;
 
             _train.AddWagon(newWagonId);
             UpdateTable();

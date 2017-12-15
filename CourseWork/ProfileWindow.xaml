@@ -1,0 +1,22 @@
+﻿<Window x:Class="CourseWork.ProfileWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseWork"
+        mc:Ignorable="d"
+        Title="ProfileWindow" Height="445.833" Width="445.833">
+    <Grid>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="340" Margin="32,36,0,0" VerticalAlignment="Top" Width="264" SelectionChanged="dataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path = TrainDirection, Mode = OneWay}" x:Name="Number" Header="Train" FontSize="8"/>
+                <DataGridTextColumn Binding="{Binding Path = SeatId, Mode = OneWay}" ClipboardContentBinding="{x:Null}" Header="Seat №"/>
+                <DataGridTextColumn Binding="{Binding Path = WagonId, Mode = OneWay}" ClipboardContentBinding="{x:Null}" Header="Wagon №"/>
+                <DataGridTextColumn Binding="{Binding Path = DateString, Mode = OneWay}" ClipboardContentBinding="{x:Null}" Header="Date"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="cancelButton" Content="Cancel booking" HorizontalAlignment="Left" Margin="317,36,0,0" VerticalAlignment="Top" Width="98" Height="26" IsEnabled="False" Click="cancelButton_Click"/>
+        <Button x:Name="changeButton" Content="Change booking" HorizontalAlignment="Left" Margin="317,77,0,0" VerticalAlignment="Top" Width="98" Height="26" IsEnabled="False" Click="changeButton_Click"/>
+
+    </Grid>
+</Window>

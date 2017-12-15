@@ -95,5 +95,12 @@ namespace CourseWork
             addTrain.Closed += OnOtherWindowClosed;
             addTrain.Show();
         }
+
+        private void profileButton_Click(object sender, RoutedEventArgs e)
+        {
+            var profileWindow = new ProfileWindow(_user);
+            profileWindow.Closed += OnOtherWindowClosed;
+            profileWindow.Show();
+        }
     }
 }

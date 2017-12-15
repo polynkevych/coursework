@@ -12,7 +12,7 @@ namespace TrainSystem
         public string Password { get; set; }
         public bool IsAdmin { get; private set; }
 
-        public Dictionary<Seat, Date> BookedSeats = new Dictionary<Seat, Date>();
+        public List<SeatDatePair> BookedSeats = new List<SeatDatePair>();
 
         public User(bool isAdmin)
         {
