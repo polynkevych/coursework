@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -26,6 +27,18 @@ namespace TrainSystem
             }
         }
 
+        public Wagon(Train train, WagonData wagonData)
+        {
+            Train = train;
+            Id = wagonData.Id;
+
+            foreach (var seatData in wagonData.Seats)
+            {
+                var seat = new Seat(this, seatData);
+                Seats.Add(seat);
+            }
+        }
+
         public List<Seat> GetAvailibleSeats(Date date)
         {
             var availibleSeats = Seats.Where(s => !s.IsBooked(date)).ToList();
@@ -36,6 +49,17 @@ namespace TrainSystem
         public List<Seat> GetBookedSeats(Date date)
         {
             return Seats.Where(s => s.IsBooked(date)).ToList();
+        }
+
+        public WagonData CreateData()
+        {
+            var seatsData = new List<SeatData>();
+            foreach (var seat in Seats)
+            {
+                var data = seat.CreateData();
+                seatsData.Add(data);
+            }
+            return new WagonData(Id, seatsData);
         }
     }
 }

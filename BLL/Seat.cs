@@ -1,50 +1,83 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using DataAccess;
 
 namespace TrainSystem
 {
     public class Seat
     {
-        public Wagon Wagon { get; set; }
-        public int Id { get; set; }
+        public Wagon Wagon { get; private set; }
+        public int Id { get; private set; }
 
-        public List<Date> bookedDates = new List<Date>();
+        public string UniqueIdentifier { get { return Wagon.Train.Id.ToString() + Wagon.Id.ToString() + Id.ToString(); } }
 
-        public Seat(Wagon wagon, int Id)
+        public Seat(Wagon wagon, int id)
         {
             Wagon = wagon;
-            this.Id = Id;
+            Id = id;
+        }
+
+        public Seat(Wagon wagon, SeatData seatData)
+        {
+            Wagon = wagon;
+            Id = seatData.Id;
+            foreach (var timeDate in seatData.BookedDates)
+            {
+                var date = new Date(timeDate);
+                _bookedDates.Add(date);
+            }
         }
 
         public bool IsBooked(Date date)
         {
-            if (bookedDates.Contains(date)) return true;
-            return false;
+            return _bookedDates.Contains(date);
+        }
+
+        public bool IsBookedAnyDate()
+        {
+            return _bookedDates.Count != 0;
         }
 
         public void Book(User user, Date date)
         {
             if (IsBooked(date)) return;
 
-            user.BookedSeats.Add(new SeatDatePair(this, date));
-            bookedDates.Add(date);
+            user.BookedSeats.Add(new BookedSeatPair(this, date));
+            user.UserManager.SaveUsers();
+            _bookedDates.Add(date);
+            Wagon.Train.TrainsManager.SaveTrains();
         }
 
         public void RevokeBooking(User user, Date date)
         {
             if (!IsBooked(date)) return;
-            user.BookedSeats.Remove(new SeatDatePair(this, date));
-            bookedDates.Remove(date);
+            user.BookedSeats.Remove(new BookedSeatPair(this, date));
+            user.UserManager.SaveUsers();
+            _bookedDates.Remove(date);
+            Wagon.Train.TrainsManager.SaveTrains();
+        }
+
+        public SeatData CreateData()
+        {
+            var bookedDateTime = new List<DateTime>();
+            foreach (var date in _bookedDates)
+            {
+                var dateTime = new DateTime(date.Year, date.Month, date.Day);
+                bookedDateTime.Add(dateTime);
+            }
+            return new SeatData(Id, UniqueIdentifier, bookedDateTime);
         }
 
         public override string ToString()
         {
             return Id.ToString();
         }
+
+        private List<Date> _bookedDates = new List<Date>();
     }
 
-    public struct SeatDatePair
+    public struct BookedSeatPair
     {
         public string TrainDirection { get { return Seat.Wagon.Train.Direction; } }
         public int SeatId { get { return Seat.Id; } }
@@ -54,7 +87,7 @@ namespace TrainSystem
         public Seat Seat;
         public Date Date;
 
-        public SeatDatePair(Seat seat, Date date)
+        public BookedSeatPair(Seat seat, Date date)
         {
             Seat = seat;
             Date = date;

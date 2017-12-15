@@ -133,6 +133,10 @@
       <Project>{B415E75A-F469-4967-8D5A-AA0B4D50F710}</Project>
       <Name>TrainSystem</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DAL\DataAccess.csproj">
+      <Project>{FB6FC318-3C45-462C-A923-1AD0034734BB}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -46,7 +46,14 @@
     <Compile Include="Train.cs" />
     <Compile Include="TrainsManager.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="UserManager.cs" />
     <Compile Include="Wagon.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DataAccess.csproj">
+      <Project>{fb6fc318-3c45-462c-a923-1ad0034734bb}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

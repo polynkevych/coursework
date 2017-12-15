@@ -47,7 +47,7 @@ namespace CourseWork
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
-            var seat = dataGrid.SelectedItem as SeatDatePair?;
+            var seat = dataGrid.SelectedItem as BookedSeatPair?;
             if (seat == null) return;
             seat.Value.Seat.RevokeBooking(_user, seat.Value.Date);
             UpdateTable();
@@ -55,7 +55,7 @@ namespace CourseWork
 
         private void changeButton_Click(object sender, RoutedEventArgs e)
         {
-            var seat = dataGrid.SelectedItem as SeatDatePair?;
+            var seat = dataGrid.SelectedItem as BookedSeatPair?;
             if (seat == null) return;
             var seatValue = seat.Value.Seat;
             var date = seat.Value.Date;

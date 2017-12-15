@@ -10,7 +10,7 @@
         <DatePicker x:Name="datePicker" HorizontalAlignment="Left" Margin="326,42,0,0" VerticalAlignment="Top"/>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="340" Margin="32,36,0,0" VerticalAlignment="Top" Width="210" SelectionChanged="dataGrid_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path = WagonId, Mode = OneWay}" x:Name="Number" Header="№" FontSize="8"/>
+                <DataGridTextColumn Binding="{Binding Path = Id, Mode = OneWay}" x:Name="Number" Header="№" FontSize="8"/>
                 <DataGridTextColumn Binding="{Binding Path = AvailibleSeats, Mode = OneWay}" ClipboardContentBinding="{x:Null}" Header="Availible Seats"/>
                 <DataGridTextColumn Binding="{Binding Path = AvailiblePercent, Mode = OneWay}" ClipboardContentBinding="{x:Null}" Header="Availible Seats %"/>
             </DataGrid.Columns>

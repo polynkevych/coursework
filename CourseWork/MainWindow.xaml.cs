@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,20 +25,43 @@ namespace CourseWork
         public MainWindow()
         {
             InitializeComponent();
+
+            _trainsManager = new TrainsManager();
+            _trainsManager.LoadTrains();
+            _userManager = new UserManager(_trainsManager);
+            _userManager.LoadUsers();
         }
+
+        private TrainsManager _trainsManager;
+        private UserManager _userManager;
 
         private void userLoginButton_Click(object sender, RoutedEventArgs e)
         {
-            var user = new User(false);
-            var wagonView = new TrainsSearchView(user);
-            wagonView.Show();
-            Close();
-        }
+            //var user1 = new User("user", "user", false);
+            //var user2 = new User("user", "user", false);
+            //var users = new List<User>();
+            //users.Add(user1);
+            //users.Add(user2);
+            //var serializer = new UsersDataSerializer();
+            //var usersData = new List<UserData>();
+            //foreach (var user in users)
+            //{
+            //    var data = user.CreateData();
+            //    usersData.Add(data);
+            //}
+            //serializer.SerializeXML(usersData);
 
-        private void adminLoginButton_Click(object sender, RoutedEventArgs e)
-        {
-            var user = new User(true);
-            var wagonView = new TrainsSearchView(user);
+            var login = loginBox.Text;
+            var password = passwordBox.Password;
+
+            var user = _userManager.Login(login, password);
+            if (user == null)
+            {
+                MessageBox.Show("Wrong login or password!");
+                return;
+            }
+
+            var wagonView = new TrainsSearchView(_trainsManager, user);
             wagonView.Show();
             Close();
         }

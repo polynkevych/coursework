@@ -41,6 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeatData.cs" />
+    <Compile Include="TrainsDataSerializer.cs" />
+    <Compile Include="TrainData.cs" />
+    <Compile Include="UserData.cs" />
+    <Compile Include="UsersDataSerializer.cs" />
+    <Compile Include="WagonData.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

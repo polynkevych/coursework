@@ -20,7 +20,7 @@ namespace CourseWork
     /// </summary>
     public partial class TrainsSearchView : Window
     {
-        public TrainsSearchView(User user)
+        public TrainsSearchView(TrainsManager trainsManager, User user)
         {
             InitializeComponent();
 
@@ -28,11 +28,9 @@ namespace CourseWork
             if (!_user.IsAdmin)
                 addNewTrainButton.Visibility = Visibility.Hidden;
 
-            _trainsManager = new TrainsManager();
-            _trainsManager.AddTrain("0", "Huevo-Kukuevo");
-            _trainsManager.AddTrain("1", "Moskva-Petushki").AddWagon(1);
+            _trainsManager = trainsManager;
 
-            _filteredTrains = _trainsManager.Trains;
+            //_filteredTrains = _trainsManager.Trains;
             datePicker.SelectedDateChanged += OnSelectedDateChanged;
             datePicker.SelectedDate = DateTime.Today;
 
