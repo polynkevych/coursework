@@ -37,20 +37,6 @@ namespace CourseWork
 
         private void userLoginButton_Click(object sender, RoutedEventArgs e)
         {
-            //var user1 = new User("user", "user", false);
-            //var user2 = new User("user", "user", false);
-            //var users = new List<User>();
-            //users.Add(user1);
-            //users.Add(user2);
-            //var serializer = new UsersDataSerializer();
-            //var usersData = new List<UserData>();
-            //foreach (var user in users)
-            //{
-            //    var data = user.CreateData();
-            //    usersData.Add(data);
-            //}
-            //serializer.SerializeXML(usersData);
-
             var login = loginBox.Text;
             var password = passwordBox.Password;
 

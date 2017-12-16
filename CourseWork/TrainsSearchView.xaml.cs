@@ -1,16 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using TrainSystem;
 
 namespace CourseWork
@@ -30,16 +21,10 @@ namespace CourseWork
 
             _trainsManager = trainsManager;
 
-            //_filteredTrains = _trainsManager.Trains;
             datePicker.SelectedDateChanged += OnSelectedDateChanged;
             datePicker.SelectedDate = DateTime.Today;
 
             UpdateTable();
-        }
-
-        public void UpdateFilteredTrains()
-        {
-            _filteredTrains = _trainsManager.FilterTrains(keywordBox.Text, _selectedDate);
         }
 
         private User _user;
@@ -56,6 +41,11 @@ namespace CourseWork
             {
                 dataGrid.Items.Add(train);
             }
+        }
+
+        private void UpdateFilteredTrains()
+        {
+            _filteredTrains = _trainsManager.FilterTrains(keywordBox.Text, _selectedDate);
         }
 
         private void OnOtherWindowClosed(object sender, EventArgs e)

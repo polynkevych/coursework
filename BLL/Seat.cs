@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using DataAccess;
 
@@ -84,8 +83,8 @@ namespace TrainSystem
         public int WagonId { get { return Seat.Wagon.Id; } }
         public string DateString { get { return Date.Day + "/" + Date.Month + "/" + Date.Year; } }
 
-        public Seat Seat;
-        public Date Date;
+        public Seat Seat { get; }
+        public Date Date { get; }
 
         public BookedSeatPair(Seat seat, Date date)
         {

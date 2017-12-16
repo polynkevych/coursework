@@ -7,19 +7,20 @@ namespace TrainSystem
 {
     public class Wagon
     {
-        public int Id { get; set; }
-        public int AvailibleSeats { get; set; }
+        public int Id { get; private set; }
+        public int AvailibleSeats { get; private set; }
         public int AvailiblePercent { get { return (int)Math.Round((float)AvailibleSeats / (float)Seats.Count * 100); } }
 
-        public Train Train { get; set; }
+        public Train Train { get; private set; }
 
-        public List<Seat> Seats = new List<Seat>();
+        public List<Seat> Seats { get; private set; }
 
         public Wagon(Train train, int wagonId)
         {
             Train = train;
             Id = wagonId;
 
+            Seats = new List<Seat>();
             for (int i = 1; i <= 27; i++)
             {
                 var seat = new Seat(this, i);
@@ -32,6 +33,7 @@ namespace TrainSystem
             Train = train;
             Id = wagonData.Id;
 
+            Seats = new List<Seat>();
             foreach (var seatData in wagonData.Seats)
             {
                 var seat = new Seat(this, seatData);

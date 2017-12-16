@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using DataAccess;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TrainSystem
 {
     public class TrainsManager
     {
-        public List<Train> Trains = new List<Train>();
+        public List<Train> Trains { get; private set; }
 
         public TrainsManager()
         {
+            Trains = new List<Train>();
             LoadTrains();
         }
 

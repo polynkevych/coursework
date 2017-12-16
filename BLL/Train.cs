@@ -1,10 +1,6 @@
 ﻿using DataAccess;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TrainSystem
 {
@@ -13,11 +9,11 @@ namespace TrainSystem
         public string Id { get; private set; }
         public string Direction { get; private set; }
         public int WagonsCount { get { return Wagons.Count; } }
-        public int AvailibleSeats { get; set; }
+        public int AvailibleSeats { get; private set; }
 
-        public TrainsManager TrainsManager { get; set; }
+        public TrainsManager TrainsManager { get; private set; }
 
-        public List<Wagon> Wagons = new List<Wagon>();
+        public List<Wagon> Wagons { get; private set; }
 
         public Train(TrainsManager trainManager, string id, string direction)
         {
@@ -31,6 +27,7 @@ namespace TrainSystem
             TrainsManager = trainManager;
             Id = trainData.Id;
             Direction = trainData.Direction;
+            Wagons = new List<Wagon>();
             foreach (var wagonData in trainData.Wagons)
             {
                 var wagon = new Wagon(this, wagonData);
